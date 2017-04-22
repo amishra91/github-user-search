@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>User Search</title>
+    <meta name="description" content="">
+    <meta name="author" content="Abhishek Mishra">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <header class="header">
+      User Search
+    </header>
+    <div class="container-fluid">
+      <div class="row search-container">
+        <div class="col-md-10">
+          <input type="search" class="form-control" id="search" placeholder="Search for user, e.g. amishra91" />
+        </div>
+        <button id="search-btn" class="btn btn-warning">Search</button>
+        <button id="clear-btn" class="btn btn-danger">Clear</button>
+      </div>    
+    <div id="main-container" class="container-fluid">
+      <div id="user-info" class="row"></div>
+    </div>
+    <div id="error-message" class="alert alert-danger hidden" role="alert">Please enter username to search</div>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>
