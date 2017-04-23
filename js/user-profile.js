@@ -163,7 +163,7 @@ const renderAvatar = (data) => {
 }
 
 let apiRepo = new XMLHttpRequest();
-apiRepo.open('GET', 'https://api.github.com/users/' + getURLParamValue("uname") + '/repos');
+apiRepo.open('GET', 'https://api.github.com/users/' + repoData[i].owner.login + '/repos');
 apiRepo.onload = function() {
     let repoData = JSON.parse(apiRepo.responseText);
     renderRepo(repoData);
