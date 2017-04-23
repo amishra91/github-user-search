@@ -45,13 +45,13 @@ const renderAvatar = (data) => {
     // user info
     let userName = document.createElement('a');
     userName.className = "user-name";
-    userName.href = "user-details.html?uname=" + data.login;
+    userName.href = data.html_url;
     userName.text = "@" + data.login;
 
     // user info
     let userFullName = document.createElement('p');
     userFullName.className = "user-name";
-    userFullName.innerHTML = data.name;
+    userFullName.innerHTML = (data.name ? user.name : "Name not available");
 
     // user bio
     let userBio = document.createElement('p');

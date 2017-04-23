@@ -18,6 +18,7 @@ searchButton.addEventListener("click", () => {
   } else {
       document.getElementById("error-message").classList.add("hidden"); 
       apiRequest.open('GET', 'https://api.github.com/search/users?q=' + searchTextBox.value + 'in:login');
+      document.getElementById('user-info').innerHTML = '';
       loadingIcon.classList.remove("hidden");
   }
 

@@ -216,3 +216,8 @@ p.user-name {
     box-shadow: 0 0 1px;
     padding: 3px 0 5px 0;
 }
+.user-name-full .user-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
