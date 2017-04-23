@@ -51,7 +51,7 @@ const renderAvatar = (data) => {
     // user info
     let userFullName = document.createElement('p');
     userFullName.className = "user-name";
-    userFullName.innerHTML = (data.name ? user.name : "Name not available");
+    userFullName.innerHTML = (data.name ? data.name : "Name not available");
 
     // user bio
     let userBio = document.createElement('p');
