@@ -163,7 +163,7 @@ const renderAvatar = (data) => {
 }
 
 let apiRepo = new XMLHttpRequest();
-apiRepo.open('GET', 'https://api.github.com/users/' + repoData[i].owner.login + '/repos');
+apiRepo.open('GET', 'https://api.github.com/users/' + getURLParamValue("uname") + '/repos');
 apiRepo.onload = function() {
     let repoData = JSON.parse(apiRepo.responseText);
     renderRepo(repoData);
@@ -175,7 +175,7 @@ const renderRepo = (repoData) => {
     let fragElement = document.createDocumentFragment();
     let repoLabel = document.createElement('h2');
     if (repoData.length > 0) {
-        repoLabel.innerHTML = "Repositories by" + " " + getURLParamValue("uname") + " " + "(" + repoData.length + ")";
+        repoLabel.innerHTML = "Repositories by" + " " + repoData[i].owner.login + " " + "(" + repoData.length + ")";
     } else {
         repoLabel.innerHTML = "No Repositories found.";    
     }
@@ -187,7 +187,6 @@ const renderRepo = (repoData) => {
         
         let userLink = document.createElement('a');
         userLink.href = repoData[i].html_url;
-        console.log(repoData[i].html_url);
         userLink.text = repoData[i].name;
 
         let repoDesc = document.createElement('p');

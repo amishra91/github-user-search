@@ -3,13 +3,14 @@ let clearButton = document.getElementById("clear-btn");
 let searchTextBox = document.getElementById("search");
 let loadingIcon = document.getElementById("loading-icon");
 
+searchTextBox.focus();
 searchTextBox.addEventListener("keyup", (event) => {
   event.preventDefault();
   if (event.keyCode == 13) {
       document.getElementById("search-btn").click();
   }
 });
-searchTextBox.focus();
+
 searchButton.addEventListener("click", () => {
   let apiRequest = new XMLHttpRequest();
   if (searchTextBox.value === '') {
@@ -32,6 +33,7 @@ searchButton.addEventListener("click", () => {
 });
 
 clearButton.addEventListener("click", () => {
+  searchTextBox.focus();
   document.getElementById('user-info').innerHTML = '';
   document.getElementById("search").value = '';
   document.getElementById("error-message").classList.add("hidden");
