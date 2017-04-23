@@ -157,7 +157,12 @@ const renderRepo = (repoData) => {
     let container = document.getElementById("user-repos");
     let fragElement = document.createDocumentFragment();
     let repoLabel = document.createElement('h2');
-    repoLabel.innerHTML = "Repositories by" + " " + getURLParamValue("uname");
+    if (repoData.length > 0) {
+        repoLabel.innerHTML = "Repositories by" + " " + getURLParamValue("uname") + " " + "(" + repoData.length + ")";    
+    } else {
+        repoLabel.innerHTML = "No Repositories found.";    
+    }
+    
     container.appendChild(repoLabel);
     for (i = 0; i < repoData.length; i++) {
         let mainDiv = document.createElement('div');

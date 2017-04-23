@@ -52,7 +52,6 @@ const renderHTML = (data) => {
       imageLink.href = "user-details.html?uname=" + data[i].login;
       imageLink.target = "_blank";
 
-
       let userInfo = document.createElement('ul');
       userInfo.appendChild(imageLink);
 
