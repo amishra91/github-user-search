@@ -8,7 +8,7 @@ const getURLParamValue = (query) => {
     l = params.length;
     for (i = 0; i < l; i++) {
         k = params[i].split('=');
-        arr[k[0]] = k[1];
+        arr[k[0]] = k[1].replace('#','');
     }
     return arr[a];
 }
@@ -28,14 +28,19 @@ const renderAvatar = (data) => {
 
     // user image
     let userImage = document.createElement('img');
-    userImage.className = "img-responsive img-rounded";
+    userImage.className = "img-responsive";
     userImage.src = data.avatar_url;
 
     // user image container
+    let insideImageContainer = document.createElement('div');
+    insideImageContainer.className = "col-md-12 user-name-full";
+
+    // user image container
     let imageContainer = document.createElement('div');
-    imageContainer.className = "col-md-4";
+    imageContainer.className = "col-md-3";
     imageContainer.appendChild(userImage);
     container.appendChild(imageContainer);
+    imageContainer.appendChild(insideImageContainer);
 
     // user info
     let userName = document.createElement('a');
@@ -48,10 +53,20 @@ const renderAvatar = (data) => {
     userFullName.className = "user-name";
     userFullName.innerHTML = data.name;
 
+    // user bio
+    let userBio = document.createElement('p');
+    userBio.className = "user-type";
+    userBio.innerHTML = "Bio :" + " " + (data.bio ? data.bio : "No Information");
+
+    // user email
+    let userEmail = document.createElement('p');
+    userEmail.className = "user-type";
+    userEmail.innerHTML = "Email :" + " " + (data.email ? '<a href="#">'+data.email+'</a>' : "No Information");
+
     // user blog
     let userBlog = document.createElement('p');
     userBlog.className = "user-type";
-    userBlog.innerHTML = "Blog :" + " " + (data.blog ? data.blog : "No Information");
+    userBlog.innerHTML = "Blog :" + " " + (data.blog ? '<a href='+data.blog+'>'+data.blog+'</a>' : "No Information");
 
     // user id
     let userid = document.createElement('p');
@@ -132,9 +147,11 @@ const renderAvatar = (data) => {
     // user info block
     let userInfoBlock = document.createElement('div');
     userInfoBlock.className = "col-md-6 user-info-block";
-    userInfoBlock.appendChild(userName);
-    userInfoBlock.appendChild(userFullName);
+    insideImageContainer.appendChild(userName);
+    insideImageContainer.appendChild(userFullName);
     userInfoBlock.appendChild(userid);
+    userInfoBlock.appendChild(userBio);
+    userInfoBlock.appendChild(userEmail);
     userInfoBlock.appendChild(userBlog);
     userInfoBlock.appendChild(userType);
     userInfoBlock.appendChild(userAdmin);
@@ -158,7 +175,7 @@ const renderRepo = (repoData) => {
     let fragElement = document.createDocumentFragment();
     let repoLabel = document.createElement('h2');
     if (repoData.length > 0) {
-        repoLabel.innerHTML = "Repositories by" + " " + getURLParamValue("uname") + " " + "(" + repoData.length + ")";    
+        repoLabel.innerHTML = "Repositories by" + " " + getURLParamValue("uname") + " " + "(" + repoData.length + ")";
     } else {
         repoLabel.innerHTML = "No Repositories found.";    
     }
@@ -169,7 +186,8 @@ const renderRepo = (repoData) => {
         mainDiv.className = "col-md-4 repository-box";
         
         let userLink = document.createElement('a');
-        userLink.href = "#";
+        userLink.href = repoData[i].html_url;
+        console.log(repoData[i].html_url);
         userLink.text = repoData[i].name;
 
         let repoDesc = document.createElement('p');
