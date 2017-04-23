@@ -1,4 +1,5 @@
-let getURLParamValue = (query) => {
+let loadingIcon = document.getElementById("loading-icon");
+const getURLParamValue = (query) => {
     let t = document.URL,
         a = query,
         params = i = j = k = null,
@@ -13,13 +14,15 @@ let getURLParamValue = (query) => {
 }
 let apiAvatar = new XMLHttpRequest();
 apiAvatar.open('GET', 'https://api.github.com/users/' + getURLParamValue("uname"));
+loadingIcon.classList.remove("hidden");
 apiAvatar.onload = function() {
     let apiData = JSON.parse(apiAvatar.responseText);
+    loadingIcon.classList.add("hidden");
     renderAvatar(apiData);
 };
 apiAvatar.send();
 
-renderAvatar = (data) => {
+const renderAvatar = (data) => {
     let container = document.getElementById("user-info");
     let fragElement = document.createDocumentFragment();
 
@@ -150,7 +153,7 @@ apiRepo.onload = function() {
 };
 apiRepo.send();
 
-renderRepo = (repoData) => {
+const renderRepo = (repoData) => {
     let container = document.getElementById("user-repos");
     let fragElement = document.createDocumentFragment();
     let repoLabel = document.createElement('h2');
