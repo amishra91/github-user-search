@@ -2,14 +2,14 @@ var searchButton = document.getElementById("search-btn");
 var clearButton = document.getElementById("clear-btn");
 var searchTextBox = document.getElementById("search");
 
-searchTextBox.addEventListener("keyup", function(event) {
+searchTextBox.addEventListener("keyup", (event) => {
   event.preventDefault();
   if (event.keyCode == 13) {
       document.getElementById("search-btn").click();
   }
 });
 
-searchButton.addEventListener("click", function() {
+searchButton.addEventListener("click", () => {
   var apiRequest = new XMLHttpRequest();
   if (searchTextBox.value === '') {
       document.getElementById("error-message").classList.remove("hidden");
@@ -19,35 +19,35 @@ searchButton.addEventListener("click", function() {
       apiRequest.open('GET', 'https://api.github.com/search/users?q=' + searchTextBox.value + 'in:login');
   }
 
-  apiRequest.onload = function() {
-      var apiData = JSON.parse(apiRequest.responseText);
+  apiRequest.onload = () => {
+      let apiData = JSON.parse(apiRequest.responseText);
       document.getElementById('user-info').innerHTML = '';
       renderHTML(apiData.items);
   };
   apiRequest.send();
 });
 
-clearButton.addEventListener("click", function() {
+clearButton.addEventListener("click", () => {
   document.getElementById('user-info').innerHTML = '';
   document.getElementById("search").value = '';
 });
 
-function renderHTML(data) {
-  var container = document.getElementById("user-info");
-  var fragElement = document.createDocumentFragment();
+renderHTML = (data) => {
+  let container = document.getElementById("user-info");
+  let fragElement = document.createDocumentFragment();
   for (i = 0; i < data.length; i++) {
-      var mainDiv = document.createElement('div');
+      let mainDiv = document.createElement('div');
       mainDiv.className = "col-md-2";
 
-      var userLink = document.createElement('a');
+      let userLink = document.createElement('a');
       userLink.href = "user-details.html?uname=" + data[i].login;
       userLink.text = data[i].login;
       userLink.target = "_blank";
-      var userInfo = document.createElement('ul');
+      let userInfo = document.createElement('ul');
 
-      var userName = document.createElement('li');
+      let userName = document.createElement('li');
 
-      var userImage = document.createElement('img');
+      let userImage = document.createElement('img');
       userImage.className = "img-responsive";
       userImage.src = data[i].avatar_url;
 

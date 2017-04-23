@@ -15,8 +15,12 @@ body {
     height: 50px
 }
 
+p {
+    margin: 0 0 5px !important;
+}
+
 a {
-    text-decoration: none;
+    text-decoration: none !important;
     color: green !important;
 }
 
@@ -150,9 +154,34 @@ p.user-name {
 #user-info img {
     width: 100%;
 }
-.repository-list a {
+.repository-box {
+    box-shadow: 0 0 1px 0;
+    margin-bottom: 20px;
+    width: 350px !important;
+    margin-right: 40px;
+    padding-bottom: 10px;
+}
+.repository-box p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #586069;
+    font-size: 12px;
+}
+.repository-box a {
     display: block;
-    padding: 20px 0 20px 0;
+    padding: 10px 0 5px 0;
+    margin-bottom: 15px;
     border-bottom: 2px solid #d3d3d3;
     font-size: 20px;
+}
+.repo-lang-icon {
+    background-color: #f1e05a;
+    position: relative;
+    margin-right: 5px;
+    top: 1px;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
 }
