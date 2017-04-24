@@ -1,5 +1,5 @@
 # github-user-search
-Download/Clone repository
-Go to folder "github-user-search"
-Open index.html
-Now you can search for user by username on github.
+1. Download/Clone repository
+2. Go to folder "github-user-search"
+3. Open index.html
+4. Now you can search for user by username on github.
