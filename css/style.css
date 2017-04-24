@@ -28,6 +28,10 @@ ul {
     list-style-type: none;
     margin: 0 0 5px 0;
 }
+#user-info .col-md-2 ul:hover {
+    box-shadow: 0 0 10px;
+    transition: all .2s;
+}
 #user-info .col-md-2 ul {
     box-shadow: 0 0 1px;
     padding: 5px 5px 5px 5px;
@@ -168,6 +172,10 @@ p.user-name {
     width: 350px !important;
     margin-right: 40px;
     padding-bottom: 10px;
+}
+.repository-box:hover {
+    box-shadow: 0 0 5px;
+    transition:  all 0.2s;
 }
 .repository-box p {
     overflow: hidden;
